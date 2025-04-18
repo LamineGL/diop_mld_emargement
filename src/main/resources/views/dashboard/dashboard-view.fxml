@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="715.0" prefWidth="1344.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sn.groupeisi.gestion_professeur_examen_isi_km_l3gl.controllers.Dashboard.DashboardController">
+   <!-- Conteneur principal -->
+   <BorderPane prefHeight="800.0" prefWidth="1200.0">
+
+      <!-- Barre latérale gauche -->
+      <left>
+         <VBox alignment="CENTER" prefHeight="782.0" prefWidth="220" spacing="15.0" style="-fx-background-color: #2C3E50; -fx-padding: 20;">
+            <children>
+               <!-- VBox pour les boutons du menu avec un spacing pour espacer les boutons -->
+               <VBox fx:id="VboxMenu" prefHeight="542.0" prefWidth="223.0" spacing="10.0">
+                  <children>
+                     <Button fx:id="btnDashboard" onAction="#toGestionDashboard" onMouseEntered="#handleButtonMouseEnter" onMouseExited="#handleButtonMouseExit" style="-fx-background-color: #34495E; -fx-text-fill: #ECF0F1;" text="📄 DASHBOARD" />
+                     <Button fx:id="btnGestionUtilisateurs" onAction="#toGestionUsers" onMouseEntered="#handleButtonMouseEnter" onMouseExited="#handleButtonMouseExit" style="-fx-background-color: #34495E; -fx-text-fill: #ECF0F1;" text="👥 GESTION DES USERS" />
+                     <Button fx:id="btnGestionCours" onAction="#toGestionCours" onMouseEntered="#handleButtonMouseEnter" onMouseExited="#handleButtonMouseExit" style="-fx-background-color: #34495E; -fx-text-fill: #ECF0F1;" text="📚 GESTION DES COURS" />
+                     <Button fx:id="btnGestionRapportDesProf" onAction="#toGestionRappdesprof" onMouseEntered="#handleButtonMouseEnter" onMouseExited="#handleButtonMouseExit" prefHeight="34.0" prefWidth="158.0" style="-fx-background-color: #34495E; -fx-text-fill: #ECF0F1;" text="📄 RAPPORT DE PRESENCE" />
+                     <Button fx:id="btnPresences" onAction="#toPresence" onMouseEntered="#handleButtonMouseEnter" onMouseExited="#handleButtonMouseExit" style="-fx-background-color: #34495E; -fx-text-fill: #ECF0F1;" text="📅 PRESENCES" />
+                     <Button fx:id="btnMesCours" onAction="#toMesCours" onMouseEntered="#handleButtonMouseEnter" onMouseExited="#handleButtonMouseExit" style="-fx-background-color: #34495E; -fx-text-fill: #ECF0F1;" text="📖 MES COURS" />
+                     <Button fx:id="btnGestionSalle" onAction="#toGestionSalle" onMouseEntered="#handleButtonMouseEnter" onMouseExited="#handleButtonMouseExit" style="-fx-background-color: #34495E; -fx-text-fill: #ECF0F1;" text="🏫 GESTION DES SALLES" />
+                  </children>
+               </VBox>
+
+               <Button fx:id="btnLogout" onAction="#toLogout" onMouseEntered="#handleButtonMouseEnter" onMouseExited="#handleButtonMouseExit" style="-fx-background-color: red; -fx-text-fill: WHITE; -fx-font-weight: bold;" text="🚪 DECONNEXION" />
+            </children>
+         </VBox>
+      </left>
+
+      <!-- Partie centrale (on ne touche pas au mainContent comme demandé) -->
+      <center>
+         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+               <StackPane fx:id="mainContent" prefHeight="749.0" prefWidth="1051.0" />
+            </children>
+         </HBox>
+      </center>
+
+      <!-- Barre supérieure -->
+      <top>
+         <!-- On utilise un HBox pour aligner le titre à gauche et l'info user à droite -->
+         <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: #2C3E50; -fx-padding: 10;" BorderPane.alignment="CENTER">
+            <children>
+               <!-- Titre du dashboard à gauche -->
+               <Label fx:id="Titre" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #ECF0F1;" text="MENU" />
+
+               <!-- VBox pour l'information utilisateur déjà gérée dans le contrôleur -->
+               <VBox fx:id="vboxInfoUserConnecter" alignment="CENTER_RIGHT" spacing="5.0" style="-fx-padding: 5; #ffffff">
+                  <!-- Le contrôleur y injectera dynamiquement le Label de bienvenue -->
+               </VBox>
+            </children>
+         </HBox>
+      </top>
+   </BorderPane>
+</AnchorPane>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="715.0" prefWidth="1344.0" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sn.groupeisi.gestion_professeur_examen_isi_km_l3gl.controllers.Administrateurs.StatistiquesController">
+
+    <!-- Conteneur principal -->
+    <VBox alignment="TOP_CENTER" spacing="20">
+        <!-- Barre de titre ou en-tête -->
+        <HBox alignment="CENTER_LEFT" prefWidth="1344.0" spacing="10" style="-fx-background-color: #2e86de; -fx-padding: 15;">
+            <Label style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" text="Dashboard des Statistiques" />
+        </HBox>
+
+        <!-- Section des cartes de statistiques -->
+        <HBox alignment="CENTER" spacing="20" style="-fx-padding: 10;">
+            <!-- Carte 1 -->
+            <VBox alignment="CENTER" prefHeight="80" prefWidth="174.0" spacing="5" style="-fx-background-color: white; -fx-border-radius: 5; -fx-background-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);">
+                <Label style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 5;" text="Émargements du Jour" />
+                <!-- Vous pouvez lier cette valeur depuis le contrôleur si vous le souhaitez -->
+                <Label fx:id="nbEmerAcruel" style="-fx-font-size: 20px; -fx-text-fill: #2e86de; -fx-font-weight: bold;" text="42" />
+            </VBox>
+
+            <!-- Carte 2 -->
+            <VBox fx:id="nbCour" alignment="CENTER" prefHeight="80" prefWidth="158.0" spacing="5" style="-fx-background-color: white; -fx-border-radius: 5; -fx-background-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);">
+                <Label style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 5;" text="Cours Actifs" />
+                <Label fx:id="nbCoursActuel" style="-fx-font-size: 20px; -fx-text-fill: #e74c3c; -fx-font-weight: bold;" text="8" />
+            </VBox>
+
+            <!-- Carte 3 -->
+            <VBox alignment="CENTER" prefHeight="80" prefWidth="150" spacing="5" style="-fx-background-color: white; -fx-border-radius: 5; -fx-background-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);">
+                <Label style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 5;" text="Taux de Présence" />
+                <Label fx:id="nbTauxPresenceAujourd" style="-fx-font-size: 20px; -fx-text-fill: #27ae60; -fx-font-weight: bold;" text="95%" />
+            </VBox>
+         <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="141.0" text="EXPORTER PDF" textFill="#a14040">
+            <font>
+               <Font name="Times New Roman" size="12.0" />
+            </font>
+         </Button>
+        </HBox>
+
+        <!-- Grille pour les graphiques -->
+        <GridPane alignment="CENTER" hgap="20" style="-fx-padding: 10;" vgap="20">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50" />
+                <ColumnConstraints percentWidth="50" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints />
+                <RowConstraints percentHeight="50.0" />
+            <RowConstraints percentHeight="50.0" />
+            </rowConstraints>
+
+            <!-- Graphique en barres (présences par Professeur) -->
+            <VBox alignment="CENTER" spacing="10" GridPane.rowIndex="1">
+                <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="📊 Présences par Professeur" />
+                <BarChart fx:id="barChartProfesseurs" prefHeight="200" prefWidth="400" title="Présences par Professeur">
+                    <xAxis>
+                        <CategoryAxis label="Professeurs" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Présences" />
+                    </yAxis>
+                </BarChart>
+            </VBox>
+
+            <!-- Graphique en ligne (évolution des présences) -->
+            <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <LineChart fx:id="lineChartPresences" prefHeight="200" prefWidth="400" title="Évolution des Présences">
+                    <xAxis>
+                        <CategoryAxis label="Date" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Nombre de Présences" />
+                    </yAxis>
+                </LineChart>
+            </VBox>
+
+            <!-- Graphique en camembert (taux de présence par cours) -->
+            <VBox alignment="CENTER" spacing="10" GridPane.rowIndex="2">
+                <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="🥧 Taux de Présence par Cours" />
+                <PieChart fx:id="pieChartCours" prefHeight="200" prefWidth="400" title="Taux de Présence par Cours" />
+            </VBox>
+
+            <!-- Espace pour un autre graphique ou un tableau, si besoin -->
+            <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <!-- Par exemple, vous pouvez réutiliser un BarChart, ou un TableView pour d’autres stats -->
+                <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Emargements par professeurs" />
+            <NumberAxis label="Listesdes professeurs(aujourdhuit)" />
+            <CategoryAxis label="Date" />
+            </VBox>
+             <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="📈 Évolution des Présences" GridPane.columnIndex="1" />
+        </GridPane>
+
+        <!-- Bouton et label de message en bas -->
+        <HBox alignment="CENTER" spacing="20" style="-fx-padding: 10;">
+            <Button fx:id="btnRafraichirStats" onAction="#rafraichirStats" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold;" text="🔄 Rafraîchir Statistiques" />
+            <Label fx:id="lblMessageStats" style="-fx-text-fill: red; -fx-font-size: 14px;" text="" />
+        </HBox>
+    </VBox>
+</AnchorPane>

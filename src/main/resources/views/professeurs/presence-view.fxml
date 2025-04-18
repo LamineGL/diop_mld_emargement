@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="715.0" prefWidth="1344.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sn.groupeisi.gestion_professeur_examen_isi_km_l3gl.controllers.Professeurs.PresenceController">
+    <children>
+        <TableView fx:id="tableCours" layoutX="56.0" layoutY="69.0" prefHeight="275.0" prefWidth="703.0">
+            <columns>
+                <TableColumn fx:id="colNomCours" prefWidth="182.0" text="Cours" />
+                <TableColumn fx:id="colHeureDebut" prefWidth="110.0" text="Heure Début" />
+                <TableColumn fx:id="colHeureFin" prefWidth="110.0" text="Heure Fin" />
+                <TableColumn fx:id="colSalle" prefWidth="150.0" text="Salle" />
+                <TableColumn fx:id="colStatut" prefWidth="150.0" text="Statut" />
+            </columns>
+        </TableView>
+
+        <Label layoutX="240.0" layoutY="6.0" prefHeight="63.0" prefWidth="334.0" text="LISTE DE MES COURS">
+            <font>
+                <Font name="Times New Roman Bold" size="25.0" />
+            </font>
+        </Label>
+
+        <Button fx:id="btnEnregistrerPresence" layoutX="38.0" layoutY="399.0" mnemonicParsing="false" onAction="#enregistrerPresence" prefHeight="55.0" prefWidth="285.0" style="-fx-background-color: green;" text="Marquer Présence" textFill="WHITE">
+            <font>
+                <Font name="Times New Roman Bold" size="23.0" />
+            </font>
+        </Button>
+
+        <Label fx:id="lblMessage" layoutX="155.0" layoutY="358.0" prefHeight="32.0" prefWidth="586.0" textFill="red">
+            <font>
+                <Font name="Times New Roman Bold" size="19.0" />
+            </font>
+        </Label>
+
+    </children>
+</AnchorPane>
