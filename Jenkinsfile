@@ -1,8 +1,12 @@
-@'
 pipeline {
     agent any
     environment {
         IMAGE = "laminegl/emargement-professeurs:${env.BUILD_NUMBER}"
+    }
+    triggers {
+        GenericTrigger {
+            token('my-webhook-token') // Change ce token si besoin
+        }
     }
     stages {
         stage('Checkout') { steps { checkout scm } }
@@ -26,10 +30,9 @@ pipeline {
     post {
         success { echo "Build réussi : $IMAGE" }
         failure {
-            mail to: 'vonlybetter3003@gmail.com,
+            mail to: 'onlybetter3003@gmail.com',
                  subject: "Échec du build #${env.BUILD_NUMBER}",
                  body: "Consultez Jenkins pour les logs."
         }
     }
 }
-'@ | Set-Content -Path Jenkinsfile
